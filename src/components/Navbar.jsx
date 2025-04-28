@@ -1,12 +1,12 @@
 import clsx from "clsx";
 import gsap from "gsap";
-import { useWindowScroll } from "react-use";
 import { useEffect, useRef, useState } from "react";
 import { TiLocationArrow } from "react-icons/ti";
+import { useWindowScroll } from "react-use";
 
 import Button from "./Button";
 
-const navItems = ["Nexus", "Vault", "Prologue", "About", "Contact"];
+const navItems = ["Sign-in"];
 
 const NavBar = () => {
   // State for toggling audio and visual indicator
@@ -62,6 +62,31 @@ const NavBar = () => {
     });
   }, [isNavVisible]);
 
+  useEffect(() => {
+    const handleKeyPress = (event) => {
+      // Check if the pressed key is 'm' or 'M' (case insensitive)
+      if (event.key.toLowerCase() === "m") {
+        toggleMute();
+      }
+    };
+
+    // Add event listener when component mounts
+    window.addEventListener("keydown", handleKeyPress);
+
+    // Clean up event listener when component unmounts
+    return () => {
+      window.removeEventListener("keydown", handleKeyPress);
+    };
+  }, [isAudioPlaying]);
+
+  const toggleMute = () => {
+    if (audioElementRef.current) {
+      audioElementRef.current.play();
+      setIsAudioPlaying(!isAudioPlaying);
+      setIsIndicatorActive(!isIndicatorActive);
+    }
+  };
+
   return (
     <div
       ref={navContainerRef}
@@ -71,7 +96,7 @@ const NavBar = () => {
         <nav className="flex size-full items-center justify-between p-4">
           {/* Logo and Product button */}
           <div className="flex items-center gap-7">
-            <img src="/img/logo.png" alt="logo" className="w-10" />
+            <img src="/img/logo.png" alt="logo" className="w-16" />
 
             <Button
               id="product-button"
@@ -102,18 +127,16 @@ const NavBar = () => {
               <audio
                 ref={audioElementRef}
                 className="hidden"
-                src="/audio/loop.mp3"
+                src="/audio/loop2.mp3"
                 loop
               />
-              {[1, 2, 3, 4].map((bar) => (
+              {[1, 2, 3, 4, 5].map((bar) => (
                 <div
                   key={bar}
                   className={clsx("indicator-line", {
                     active: isIndicatorActive,
                   })}
-                  style={{
-                    animationDelay: `${bar * 0.1}s`,
-                  }}
+                  style={{ animationDelay: `${bar * 0.1}s` }}
                 />
               ))}
             </button>

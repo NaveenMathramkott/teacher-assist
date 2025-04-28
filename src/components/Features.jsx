@@ -1,5 +1,5 @@
-import { useRef, useState } from "react"
-import { TiLocationArrow } from "react-icons/ti"
+import { useRef, useState } from "react";
+import { TiLocationArrow } from "react-icons/ti";
 
 export const BentoTilt = ({ children, className = "" }) => {
   const [transformStyle, setTransformStyle] = useState("");
@@ -69,7 +69,7 @@ export const BentoCard = ({ src, title, description, isComingSoon }) => {
         <div>
           <h1 className="bento-title special-font">{title}</h1>
           {description && (
-            <p className="mt-3 max-w-64 text-xs md:text-base">{description}</p>
+            <p className="mt-3 max-w-96 text-xs md:text-base ">{description}</p>
           )}
         </div>
 
@@ -99,90 +99,75 @@ export const BentoCard = ({ src, title, description, isComingSoon }) => {
 };
 
 const Features = () => (
-  <section className="bg-black pb-52">
+  <section className="bg-black ">
     <div className="container mx-auto px-3 md:px-10">
       <div className="px-5 py-32">
-        <p className="font-circular-web text-lg text-blue-50">
-          Into the Metagame Layer
+        <p className="text-center font-circular-web text-2xl text-blue-50">
+          Unlock the Power of Your Documents with Teacher Assist
         </p>
-        <p className="max-w-md font-circular-web text-lg text-blue-50 opacity-50">
-          Immerse yourself in a rich and ever-expanding universe where a vibrant
-          array of products converge into an interconnected overlay experience
-          on your world.
+        <p className="max-w-full text-center font-circular-web text-lg text-blue-50 opacity-50">
+          Tired of skimming through lengthy PDFs and DOCX files to find answers?
+          <br />
+          Our AI-powered document reader transforms the way you interact with
+          text. Simply upload your files, ask any question, and get instant,
+          accurate answers
         </p>
       </div>
 
       <BentoTilt className="border-hsla relative mb-7 h-96 w-full overflow-hidden rounded-md md:h-[65vh]">
         <BentoCard
-          src="videos/feature-1.mp4"
+          src="videos/earth.mp4"
+          autoPlay
+          loop
+          muted
           title={
             <>
-              radia<b>n</b>t
+              I<b>n</b>stant A<b>n</b>s<b>w</b>ers
             </>
           }
-          description="A cross-platform metagame app, turning your activities across Web2 and Web3 games into a rewarding adventure."
-          isComingSoon
+          description="Ask anything about your document and get precise responses."
         />
       </BentoTilt>
 
-      <div className="grid h-[135vh] w-full grid-cols-2 grid-rows-3 gap-7">
+      <div className="grid h-[125vh] w-full grid-cols-2 grid-rows-3 gap-7">
         <BentoTilt className="bento-tilt_1 row-span-1 md:col-span-1 md:row-span-2">
           <BentoCard
-            src="videos/feature-2.mp4"
+            src="videos/cube.mp4"
+            autoPlay
+            loop
+            muted
             title={
               <>
-                zig<b>m</b>a
+                <b>u</b>s<b>e</b>r F<b>r</b>iendl<b>y</b>
               </>
             }
-            description="An anime and gaming-inspired NFT collection - the IP primed for expansion."
-            isComingSoon
+            description="Get concise breakdowns or in-depth explanations and No complex setup—just upload, ask, and receive answers."
           />
         </BentoTilt>
 
         <BentoTilt className="bento-tilt_1 row-span-1 ms-32 md:col-span-1 md:ms-0">
           <BentoCard
-            src="videos/feature-3.mp4"
-            title={
-              <>
-                n<b>e</b>xus
-              </>
-            }
-            description="A gamified social hub, adding a new dimension of play to social interaction for Web3 communities."
-            isComingSoon
-          />
-        </BentoTilt>
-
-        <BentoTilt className="bento-tilt_1 me-14 md:col-span-1 md:me-0">
-          <BentoCard
-            src="videos/feature-4.mp4"
-            title={
-              <>
-                az<b>u</b>l
-              </>
-            }
-            description="A cross-world AI Agent - elevating your gameplay to be more fun and productive."
-            isComingSoon
-          />
-        </BentoTilt>
-
-        <BentoTilt className="bento-tilt_2">
-          <div className="flex size-full flex-col justify-between bg-violet-300 p-5">
-            <h1 className="bento-title special-font max-w-64 text-black">
-              M<b>o</b>re co<b>m</b>ing s<b>o</b>on.
-            </h1>
-
-            <TiLocationArrow className="m-5 scale-[5] self-end" />
-          </div>
-        </BentoTilt>
-
-        <BentoTilt className="bento-tilt_2">
-          <video
-            src="videos/feature-5.mp4"
+            src="videos/lightbook.mp4"
+            autoPlay
             loop
             muted
-            autoPlay
-            className="size-full object-cover object-center"
+            title={
+              <>
+                Supports P<b>d</b>F & D<b>o</b>CX
+              </>
+            }
+            description="Works seamlessly with your preferred file formats."
           />
+        </BentoTilt>
+
+        <BentoTilt className="bento-tilt_2">
+          <div className="flex size-full flex-col justify-between bg-cyan-500 p-5">
+            <h1 className="bento-title special-font max-w-64 text-black">
+              M<b>o</b>re fe<b>a</b>t<b>u</b>res co<b>m</b>ing s<b>o</b>on.
+            </h1>
+
+            <TiLocationArrow className="m-5 scale-[14] self-end" />
+          </div>
         </BentoTilt>
       </div>
     </div>

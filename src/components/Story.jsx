@@ -1,7 +1,6 @@
 import gsap from "gsap";
 import { useRef } from "react";
 
-import Button from "./Button";
 import AnimatedTitle from "./AnimatedTitle";
 
 const FloatingImage = () => {
@@ -48,13 +47,9 @@ const FloatingImage = () => {
   return (
     <div id="story" className="min-h-dvh w-screen bg-black text-blue-50">
       <div className="flex size-full flex-col items-center py-10 pb-24">
-        <p className="font-general text-sm uppercase md:text-[10px]">
-          the multiversal ip world
-        </p>
-
         <div className="relative size-full">
           <AnimatedTitle
-            title="the st<b>o</b>ry of <br /> a hidden real<b>m</b>"
+            title="Uplo<b>a</b>d Y<b>o</b>ur document <br /> <b>a</b>sk your question <br /> <b>g</b>et your a<b>n</b>swer"
             containerClass="mt-5 pointer-events-none mix-blend-difference relative z-10"
           />
 
@@ -102,20 +97,24 @@ const FloatingImage = () => {
             </svg>
           </div>
         </div>
-
+        <AnimatedTitle
+          title="Knowledge at Your Fingertips—Faster Than Ever."
+          containerClass=" pointer-events-none mix-blend-difference relative z-10"
+        />
         <div className="-mt-80 flex w-full justify-center md:-mt-64 md:me-44 md:justify-end">
           <div className="flex h-full w-fit flex-col items-center md:items-start">
-            <p className="mt-3 max-w-sm text-center font-circular-web text-violet-50 md:text-start">
-              Where realms converge, lies Zentry and the boundless pillar.
-              Discover its secrets and shape your fate amidst infinite
-              opportunities.
+            <p className="mb-20 max-w-sm text-right font-circular-web text-violet-50 md:text-right">
+              Quickly extract key points from research papers and textbooks.
+              Analyze reports, contracts, and proposals in minutes. Get instant
+              references without manual searching. Dive deep into books and
+              articles effortlessly.
             </p>
 
-            <Button
+            {/* <Button
               id="realm-btn"
               title="discover prologue"
               containerClass="mt-5"
-            />
+            /> */}
           </div>
         </div>
       </div>

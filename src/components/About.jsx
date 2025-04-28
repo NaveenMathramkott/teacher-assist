@@ -1,7 +1,6 @@
-import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
-
 import AnimatedTitle from "./AnimatedTitle";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -12,49 +11,60 @@ const About = () => {
       scrollTrigger: {
         trigger: "#clip",
         start: "center center",
-        end: "+=800 center",
+        end: "+=500 center",
         scrub: 0.5,
         pin: true,
         pinSpacing: true,
       },
     });
 
+    // Initial state: full height image
+    clipAnimation.from(".mask-clip-path", { height: "100vh", width: "100%" });
+
+    // Animate to letterbox effect (trim top and bottom)
     clipAnimation.to(".mask-clip-path", {
-      width: "100vw",
-      height: "100vh",
-      borderRadius: 0,
+      height: "70vh", // Adjust this value to control how much is trimmed
+      width: "100%",
+      paddingTop: 300,
+      opacity: 0.4,
+      zIndex: -1000,
+      boarderRadius: 0,
+
+      // ease: "power2.inOut",
     });
+
+    // Optional: Add a slight scale effect for more cinematic feel
+    clipAnimation.to(
+      ".mask-clip-path img",
+      { scale: 1.05, ease: "power2.inOut" },
+      "<"
+    );
+    clipAnimation.to(
+      "#about",
+      { backgroundColor: "rgba(243, 250, 1,.3)", ease: "power2.inOut" },
+      "<"
+    );
   });
 
   return (
-    <div id="about" className="min-h-screen w-screen">
-      <div className="relative mb-8 mt-36 flex flex-col items-center gap-5">
-        <p className="font-general text-sm uppercase md:text-[10px]">
-          Welcome to Zentry
-        </p>
-
-        <AnimatedTitle
-          title="Disc<b>o</b>ver the world's <br /> largest shared <b>a</b>dventure"
-          containerClass="mt-5 !text-black text-center"
-        />
-
-        <div className="about-subtext">
-          <p>The Game of Games begins—your life, now an epic MMORPG</p>
-          <p className="text-gray-500">
-            Zentry unites every player from countless games and platforms, both
-            digital and physical, into a unified Play Economy
-          </p>
-        </div>
-      </div>
-
-      <div className="h-dvh w-screen" id="clip">
-        <div className="mask-clip-path about-image">
+    <div id="about" className=" min-h-screen w-screen">
+      <div
+        className="relative flex h-screen w-screen items-center justify-center overflow-hidden"
+        id="clip"
+      >
+        <div className="mask-clip-path  absolute inset-0 flex size-full items-center justify-center overflow-hidden">
           <img
-            src="img/about.webp"
+            src="img/about-sec.png"
             alt="Background"
-            className="absolute left-0 top-0 size-full object-cover"
+            className="size-full rounded-none object-cover"
           />
         </div>
+        <AnimatedTitle
+          title="Rev<b>o</B>luti<b>o</b>nize D<b>o</b>cuments with <br/> Next-Ge<b>n</b> Docum<b>e</b>nt In<b>t</b>elli<b>g</b>ence"
+          // title="Disc<b>o</b>ver the most efficient <br /> AI for document <b>M</b>anagement"
+          containerClass="mt-50 !text-black text-center"
+          startValue="800"
+        />
       </div>
     </div>
   );

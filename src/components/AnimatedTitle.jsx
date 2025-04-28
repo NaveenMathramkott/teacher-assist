@@ -1,11 +1,11 @@
-import { gsap } from "gsap";
-import { useEffect, useRef } from "react";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import clsx from "clsx";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useEffect, useRef } from "react";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const AnimatedTitle = ({ title, containerClass }) => {
+const AnimatedTitle = ({ title, containerClass, startValue = "500" }) => {
   const containerRef = useRef(null);
 
   useEffect(() => {
@@ -13,7 +13,7 @@ const AnimatedTitle = ({ title, containerClass }) => {
       const titleAnimation = gsap.timeline({
         scrollTrigger: {
           trigger: containerRef.current,
-          start: "100 bottom",
+          start: `${startValue} bottom`,
           end: "center bottom",
           toggleActions: "play none none reverse",
         },
